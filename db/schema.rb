@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_22_040444) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_22_042406) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,6 +33,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_22_040444) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wine_vintages", force: :cascade do |t|
+    t.integer "vintage"
+    t.decimal "alcohol"
+    t.integer "likes", default: 0
+    t.bigint "wine_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["wine_id"], name: "index_wine_vintages_on_wine_id"
+  end
+
   create_table "wineries", force: :cascade do |t|
     t.string "name"
     t.bigint "location_id", null: false
@@ -51,6 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_22_040444) do
     t.index ["winery_id"], name: "index_wines_on_winery_id"
   end
 
+  add_foreign_key "wine_vintages", "wines"
   add_foreign_key "wineries", "locations"
   add_foreign_key "wines", "wineries"
 end
