@@ -6,6 +6,7 @@ gem 'devise'
 gem 'dotenv-rails', groups: %i[development test]
 gem 'importmap-rails'
 gem 'jbuilder'
+gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 7.0.8'
 gem 'redis', '~> 4.0'
