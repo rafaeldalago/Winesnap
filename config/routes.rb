@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  resources :wine_vintages
-  resources :wines
   devise_for :users
+  resources :experiences, :wine_vintages, :wines, :wineries, :locations
 
-  resources :wineries, :locations
+  root 'experiences#index'
 end
