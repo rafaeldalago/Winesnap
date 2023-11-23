@@ -10,9 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_22_042406) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_23_015602) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "experiences", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "wine_vintage_id", null: false
+    t.text "notes"
+    t.decimal "rating"
+    t.integer "price"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_experiences_on_user_id"
+    t.index ["wine_vintage_id"], name: "index_experiences_on_wine_vintage_id"
+  end
 
   create_table "locations", force: :cascade do |t|
     t.string "name", null: false
@@ -61,6 +74,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_22_042406) do
     t.index ["winery_id"], name: "index_wines_on_winery_id"
   end
 
+  add_foreign_key "experiences", "users"
+  add_foreign_key "experiences", "wine_vintages"
   add_foreign_key "wine_vintages", "wines"
   add_foreign_key "wineries", "locations"
   add_foreign_key "wines", "wineries"

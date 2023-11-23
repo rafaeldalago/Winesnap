@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  wine_vintage: one
+  notes: MyText
+  rating: 9.99
+  price: 1
+  location: MyString
+
+two:
+  user: two
+  wine_vintage: two
+  notes: MyText
+  rating: 9.99
+  price: 1
+  location: MyString
