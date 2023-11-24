@@ -67,6 +67,6 @@ class ExperiencesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def experience_params
-    params.require(:experience).permit(:user_id, :wine_vintage_id, :notes, :rating, :price, :location)
+    params.require(:experience).permit(:user_id, :wine_vintage_id, :notes, :rating, :price, :location, :tasted_on)
   end
 end
