@@ -1,5 +1,6 @@
 class WinesController < ApplicationController
   before_action :set_wine, only: %i[show edit update destroy]
+  before_action :check_winery_presence, only: %i[new]
 
   # GET /wines or /wines.json
   def index
@@ -67,5 +68,9 @@ class WinesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def wine_params
     params.require(:wine).permit(:name, :edition, :variety, :winery_id)
+  end
+
+  def check_winery_presence
+    redirect_to new_winery_path(from: 'new_wine') if Winery.count.zero?
   end
 end

@@ -1,9 +1,10 @@
 class ExperiencesController < ApplicationController
   before_action :set_experience, only: %i[show edit update destroy]
+  before_action :check_wine_vintage_presence, only: %i[new]
 
   # GET /experiences or /experiences.json
   def index
-    @experiences = Experience.all
+    @experiences = current_user.experiences.all
   end
 
   # GET /experiences/1 or /experiences/1.json
@@ -62,11 +63,15 @@ class ExperiencesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_experience
-    @experience = Experience.find(params[:id])
+    @experience = current_user.experiences.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
   def experience_params
     params.require(:experience).permit(:user_id, :wine_vintage_id, :notes, :rating, :price, :location, :tasted_on)
+  end
+
+  def check_wine_vintage_presence
+    redirect_to new_wine_vintage_path(from: 'new_experience') if WineVintage.count.zero?
   end
 end
