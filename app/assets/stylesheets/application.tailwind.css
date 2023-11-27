@@ -2,12 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-
 @layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+  .primary-link {
+    @apply font-medium text-dark_cherry hover:underline;
+  }
+
+  .tertiary-link {
+    @apply font-medium hover:underline;
+  }
+
+  .action-button {
+    @apply font-medium bg-action_cherry hover:opacity-90 text-white cursor-pointer px-8 py-2 rounded-full
   }
 }
-
-*/

@@ -13,9 +13,12 @@
     <%= form.label :name %>
     <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
-  <div class="my-5">
-    <%= form.label :location_id %>
-    <%= form.collection_select :location_id, @locations, :id, lambda { |location| "#{location.name}, #{location.country}" }, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="my-5 flex flex-col gap-2">
+    <div class="flex">
+      <span>Select a location or </span>
+      <%= link_to 'create a new one', new_location_path(from: 'new_winery'), class: "font-semibold text-[#a12a45] px-2" %>
+    </div>
+    <%= form.collection_select :location_id, @locations, :id, lambda { |location| "#{location.name}, #{location.country}" }, selected: params[:location_id] || winery.location_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
   <div class="inline">
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>

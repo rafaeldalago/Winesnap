@@ -1,5 +1,6 @@
 class WineriesController < ApplicationController
   before_action :set_winery, only: %i[show edit update destroy]
+  before_action :check_location_presence, only: %i[new]
 
   # GET /wineries or /wineries.json
   def index
@@ -67,5 +68,9 @@ class WineriesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def winery_params
     params.require(:winery).permit(:name, :location_id)
+  end
+
+  def check_location_presence
+    redirect_to new_location_path(from: 'new_winery') if Location.count.zero?
   end
 end
