@@ -1,0 +1,51 @@
+<div id="<%= dom_id experience %>" class="flex flex-col gap-2 bg-pale_background rounded-xl p-6">
+  <p>Full name: <%= experience.wine_vintage.full_name %></p>
+  <p>Name: <%= experience.wine.name %></p>
+  <p>Variety: <%= experience.wine.variety %></p>
+  <p>Edition: <%= experience.wine.edition %></p>
+  <p>Vintage: <%= experience.wine_vintage.vintage %></p>
+  <p>Price: <%= experience.price %></p>
+  <p>Rating: <%= experience.rating %></p>
+  <p>Tasted on: <%= experience.tasted_on %></p>
+  <p>Location: <%= experience.location %></p>
+  <p>Notes: <%= experience.notes %></p>
+  <p class="text-sm text-zinc-700 mt-10">
+    <%= experience.wine.variety %>
+  </p>
+  <p class="font-bold text-2xl">
+    <%= experience.wine.name %>
+  </p>
+  <p class="my-5">
+    <strong class="block font-medium mb-1">User:</strong>
+    <%= experience.user.email %>
+  </p>
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Wine vintage:</strong>
+    <%= experience.wine_vintage.full_name %>
+  </p>
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Notes:</strong>
+    <%= experience.notes %>
+  </p>
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Rating:</strong>
+    <%= experience.rating %>
+  </p>
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Price:</strong>
+    <%= experience.price %>
+  </p>
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Location:</strong>
+    <%= experience.location %>
+  </p>
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Tasted on:</strong>
+    <%= experience.tasted_on %>
+  </p>
+  <% if action_name != "show" %>
+    <%= link_to "Show this experience", experience, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this experience", edit_experience_path(experience), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
