@@ -2,7 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    @apply text-zinc-700;
+  }
+}
+
 @layer components {
+  .menu-link {
+    @apply font-medium hover:underline;
+  }
+
   .primary-link {
     @apply font-medium text-dark_cherry hover:underline;
   }
@@ -11,7 +21,11 @@
     @apply font-medium hover:underline;
   }
 
-  .action-button {
+  .primary-button {
     @apply font-medium bg-action_cherry hover:opacity-90 text-white cursor-pointer px-8 py-2 rounded-full
+  }
+
+  .tertiary-button {
+    @apply hover:opacity-90 hover:bg-zinc-100 cursor-pointer px-8 py-2 rounded-full
   }
 }

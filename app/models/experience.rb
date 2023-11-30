@@ -26,4 +26,5 @@
 class Experience < ApplicationRecord
   belongs_to :user
   belongs_to :wine_vintage
+  has_one :wine, through: :wine_vintage
 end

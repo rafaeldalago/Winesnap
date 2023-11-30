@@ -9,8 +9,11 @@
       </ul>
     </div>
   <% end %>
-  <div class="my-5">
-    <%= form.label :wine_vintage_id %>
+  <div class="my-5 flex flex-col gap-2">
+    <div class="flex">
+      <span>Select a wine vintage or </span>
+      <%= link_to 'create a new one', new_wine_vintage_path(from: 'new_experience'), class: "font-semibold text-[#a12a45] px-2" %>
+    </div>
     <%= form.collection_select :wine_vintage_id, @wine_vintages, :id, lambda { |wine_vintage| "#{wine_vintage.full_name}" }, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
   <div class="my-5">
