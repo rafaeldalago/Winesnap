@@ -20,6 +20,9 @@ class Winery < ApplicationRecord
   belongs_to :location
   has_many :wines
 
+  validates :name, presence: true, uniqueness: { scope: :location, case_sensitive: false }
+  validates_presence_of :location
+
   def full_description
     "#{name} (#{location.full_location})"
   end

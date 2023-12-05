@@ -22,6 +22,10 @@ class WineVintage < ApplicationRecord
   belongs_to :wine
   has_many :experiences
 
+  validates :vintage, numericality: { only_integer: true }, length: { in: 3..4 }
+  validates :alcohol, numericality: { only_integer: true }
+  validates_presence_of :wine_id
+
   def full_name
     "#{vintage} #{wine.name} #{wine.variety}, #{wine.winery.name} (#{wine.winery.location.full_location})"
   end

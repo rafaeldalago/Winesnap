@@ -27,4 +27,7 @@ class Experience < ApplicationRecord
   belongs_to :user
   belongs_to :wine_vintage
   has_one :wine, through: :wine_vintage
+
+  validates :rating, numericality: { in: 0..10, message: 'Rating must be between 0 and 10' }
+  validates_presence_of :wine_vintage, :user
 end

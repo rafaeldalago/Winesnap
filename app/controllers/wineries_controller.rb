@@ -22,6 +22,7 @@ class WineriesController < ApplicationController
   # POST /wineries or /wineries.json
   def create
     @winery = Winery.new(winery_params)
+    @locations = Location.all
 
     respond_to do |format|
       if @winery.save
