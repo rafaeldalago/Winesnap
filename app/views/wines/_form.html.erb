@@ -26,7 +26,7 @@
       <span>Select a winery or </span>
       <%= link_to 'create a new one', new_winery_path(from: 'new_wine'), class: "font-semibold text-[#a12a45] px-2" %>
     </div>
-    <%= form.collection_select :winery_id, @wineries, :id, :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.collection_select :winery_id, @wineries, :id, lambda { |winery| "#{winery.name} (#{winery.location.full_location})" }, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
   <div class="inline">
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>

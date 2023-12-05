@@ -21,4 +21,11 @@
 class Wine < ApplicationRecord
   belongs_to :winery
   has_many :wine_vintages
+
+  validates :name, presence: true
+  validates_presence_of :winery
+
+  def full_description
+    "#{variety}#{" #{edition}" if edition.present?}, #{name} (#{winery.location.full_location})"
+  end
 end

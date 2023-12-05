@@ -21,6 +21,7 @@ class WineVintagesController < ApplicationController
   # POST /wine_vintages or /wine_vintages.json
   def create
     @wine_vintage = WineVintage.new(wine_vintage_params)
+    @wines = Wine.all
 
     respond_to do |format|
       if @wine_vintage.save

@@ -24,6 +24,7 @@ class ExperiencesController < ApplicationController
   # POST /experiences or /experiences.json
   def create
     @experience = current_user.experiences.build(experience_params)
+    @wine_vintages = WineVintage.all
 
     respond_to do |format|
       if @experience.save
