@@ -4,11 +4,23 @@
 
 @layer base {
   html {
-    @apply text-zinc-700;
+    @apply text-zinc-700 text-[15px];
+  }
+
+  h1 {
+    @apply text-5xl font-semibold
+  }
+
+  h2 {
+    @apply text-2xl
   }
 }
 
 @layer components {
+  .footer-link {
+    @apply text-[#bbb5b2]
+  }
+
   .menu-link {
     @apply font-medium hover:underline;
   }
@@ -27,5 +39,13 @@
 
   .tertiary-button {
     @apply hover:opacity-90 hover:bg-zinc-100 cursor-pointer px-8 py-2 rounded-full
+  }
+
+  .table {
+    @apply w-full
+  }
+
+  .table th, td {
+    @apply p-4 text-left
   }
 }

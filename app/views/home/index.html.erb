@@ -1,0 +1,39 @@
+<div class="flex flex-col bg-white">
+  <div class="flex bg-pale_background gap-4 p-16 pb-32">
+    <div class="flex flex-1 flex-col justify-center items-center gap-4">
+      <h1 class="h1">Pour, record, relish:</h1>
+      <h1 class="h1">your wine journey starts here.</h1>
+      <div class="mt-8">
+        <%= link_to 'Start now', new_user_session_path, class: "primary-button" %>
+      </div>
+    </div>
+  </div>
+  <div class="flex relative items-center justify-center w-full mb-28">
+    <div class="flex bg-white p-4 px-10 absolute rounded-3xl shadow-md gap-6 w-[540px]">
+      <div class="flex flex-col p-4 flex-1">
+        <span class="text-dark_green font-semibold text-3xl">
+          <%= @metrics[:experiences] %>
+        </span>
+        <span class="text-zinc-400 font-light">
+          Experiences
+        </span>
+      </div>
+      <div class="flex flex-col p-4 flex-1">
+        <span class="text-dark_green font-semibold text-3xl">
+          <%= @metrics[:wines] %>
+        </span>
+        <span class="text-zinc-400 font-light">
+          Wines
+        </span>
+      </div>
+      <div class="flex flex-col p-4 flex-1">
+        <span class="text-dark_green font-semibold text-3xl">
+          <%= @metrics[:liters] %>
+        </span>
+        <span class="text-zinc-400 font-light">
+          Liters
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
