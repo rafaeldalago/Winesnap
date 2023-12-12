@@ -1,14 +1,26 @@
-<div class="w-full">
+<div class="w-full flex flex-col gap-6">
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
-
   <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Locations</h1>
+    <h1 class="font-bold text-2xl">Locations <%= "(#{@locations.size})" %></h1>
     <%= link_to "New location", new_location_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
-
-  <div id="locations" class="min-w-full">
-    <%= render @locations %>
-  </div>
+  <table class='table'>
+    <tr>
+      <th><%= link_to "Name", :sort => "name" %></th>
+      <th><%= link_to "Country", :sort => "country" %></th>
+      <th>Wines</th>
+    </tr>
+    <% @locations.each do |location| %>
+      <tr class="<%= cycle('bg-zinc-50', 'bg-white') %>">
+        <td><%= location.name %></td>
+        <td><%= location.country %></td>
+        <td><%= location.wines_count %></td>
+      </tr>
+    <% end %>
+  </table>
+  <%# <div id="locations" class="min-w-full"> %>
+  <%# render @locations %>
+  <%# </div> %>
 </div>
