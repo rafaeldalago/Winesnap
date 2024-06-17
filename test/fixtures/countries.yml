@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: countries
+#
+#  id          :bigint           not null, primary key
+#  code        :string
+#  name        :string
+#  wines_count :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+one:
+  code: MyString
+  name: MyString
+  wines_count: 1
+
+two:
+  code: MyString
+  name: MyString
+  wines_count: 1

@@ -1,0 +1,16 @@
+<table class='table'>
+  <tr>
+    <th class="w-8"><%= link_to "#", :sort => "id" %></th>
+    <th><%= link_to "Code", :sort => "code" %></th>
+    <th><%= link_to "Name", :sort => "name" %></th>
+    <th>Wines</th>
+  </tr>
+  <% @countries.each do |country| %>
+    <tr class="<%= cycle('bg-zinc-50', 'bg-white') %>">
+      <td><%= country.id %></td>
+      <td><%= country.code %></td>
+      <td><%= country.name %></td>
+      <td><%= country.wines_count %></td>
+    </tr>
+  <% end %>
+</table>

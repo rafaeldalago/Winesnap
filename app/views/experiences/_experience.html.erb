@@ -1,0 +1,94 @@
+<%= link_to_cond(action_name == 'index', experience_path(experience)) do %>
+  <div id="<%= dom_id experience %>" class="flex flex-col gap-2 rounded-xl p-6 bg-zinc-50 border-[#f0f0f0] border-solid border-[1px] max-w-[320px] min-w-[320px] h-full hover:border-[#ddd]">
+    <div class="flex flex-col mb-6">
+      <span class="text-sm text-action_cherry font-semibold">
+        <%= experience.wine.variety %>
+      </span>
+      <span class="font-bold text-3xl">
+        <%= experience.wine.name %>
+      </span>
+    </div>
+    <div class="flex gap-4">
+      <div class="flex flex-col gap-2 flex-1">
+        <div class="flex flex-col rounded-lg">
+          <span class="text-sm text-[#b3b3b3]">
+            Vintage
+          </span>
+          <span class="font-semibold">
+            <%= experience.wine_vintage.vintage %>
+          </span>
+        </div>
+        <div class="flex flex-col rounded-lg">
+          <span class="text-sm text-[#b3b3b3]">
+            Alcohol
+          </span>
+          <span class="font-semibold">
+            <%= alcohol experience.wine_vintage.alcohol %>
+          </span>
+        </div>
+        <div class="flex flex-col rounded-lg">
+          <span class="text-sm text-[#b3b3b3]">
+            Price
+          </span>
+          <span class="font-semibold">
+            <%= to_currency experience.price %>
+          </span>
+        </div>
+      </div>
+      <div class="flex flex-col gap-2 flex-1">
+        <div class="flex flex-col rounded-lg">
+          <span class="text-sm text-[#b3b3b3]">
+            Edition
+          </span>
+          <span class="font-semibold">
+            <%= display experience.wine.edition %>
+          </span>
+        </div>
+        <div class="flex flex-col rounded-lg">
+          <span class="text-sm text-[#b3b3b3]">
+            Rating
+          </span>
+          <span class="font-semibold">
+            <%= add_scale experience.rating %>
+          </span>
+        </div>
+        <div class="flex flex-col rounded-lg">
+          <span class="text-sm text-[#b3b3b3]">
+            Tasted on
+          </span>
+          <span class="font-semibold">
+            <%= experience.tasted_on %>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col rounded-lg mt-6">
+      <span class="text-sm text-[#b3b3b3]">
+        Location
+      </span>
+      <span>
+        <%= experience.location %>
+      </span>
+    </div>
+    <% if action_name == 'show' %>
+      <div class="flex flex-col rounded-lg">
+        <span class="text-sm text-[#b3b3b3]">
+          Bottles
+        </span>
+        <span class="font-semibold">
+          <%= experience.wine_vintage.experiences.size %>
+        </span>
+      </div>
+      <% if experience.notes.present? %>
+        <div class="flex flex-col rounded-lg">
+          <span class="text-sm text-[#b3b3b3]">
+            Notes
+          </span>
+          <span>
+            <%= experience.notes %>
+          </span>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

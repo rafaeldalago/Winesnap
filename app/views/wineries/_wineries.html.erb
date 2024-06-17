@@ -1,0 +1,14 @@
+<table class='table'>
+  <tr>
+    <th class="w-8"><%= link_to "#", :sort => "id" %></th>
+    <th><%= link_to "Name", :sort => "name" %></th>
+    <th><%= link_to "Location", :sort => "location" %></th>
+  </tr>
+  <% wineries.each do |winery| %>
+    <tr class="<%= cycle('bg-zinc-50', 'bg-white') %>">
+      <td><%= winery.id %></td>
+      <td><%= winery.name %></td>
+      <td><%= winery.location.full_location %></td>
+    </tr>
+  <% end %>
+</table>

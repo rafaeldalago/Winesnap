@@ -2,12 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
+@layer base {
+  html {
+    @apply text-zinc-700 text-[15px];
+  }
 
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+  h1 {
+    @apply text-5xl font-semibold
+  }
+
+  h2 {
+    @apply text-2xl
   }
 }
 
-*/
+@layer components {
+  .footer-link {
+    @apply text-[#bbb5b2]
+  }
+
+  .menu-link {
+    @apply font-medium hover:underline;
+  }
+
+  .primary-link {
+    @apply font-medium text-dark_cherry hover:underline;
+  }
+
+  .tertiary-link {
+    @apply font-medium hover:underline;
+  }
+
+  .primary-button {
+    @apply font-medium bg-action_cherry hover:opacity-90 text-white cursor-pointer px-8 py-2 rounded-full
+  }
+
+  .tertiary-button {
+    @apply hover:opacity-90 hover:bg-zinc-100 cursor-pointer px-8 py-2 rounded-full
+  }
+
+  .table {
+    @apply w-full
+  }
+
+  .table th, td {
+    @apply p-4 text-left
+  }
+}

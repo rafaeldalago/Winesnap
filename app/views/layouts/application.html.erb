@@ -6,14 +6,16 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
+  <body class="flex flex-col items-center">
+    <main class="flex flex-col w-full max-w-[1440px] min-h-screen">
+      <%= render partial: 'layouts/header' %>
+      <div class="flex flex-1 flex-col gap-8 <%= 'p-16' if controller_name != 'home' %>">
+        <%= yield %>
+      </div>
+      <%= render partial: 'layouts/footer' %>
     </main>
   </body>
 </html>

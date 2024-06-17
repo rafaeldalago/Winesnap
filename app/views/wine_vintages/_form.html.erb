@@ -1,0 +1,30 @@
+<%= form_with(model: wine_vintage, class: "contents") do |form| %>
+  <% if wine_vintage.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(wine_vintage.errors.count, "error") %> prohibited this wine_vintage from being saved:</h2>
+      <ul>
+        <% wine_vintage.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="my-5">
+    <%= form.label :vintage %>
+    <%= form.number_field :vintage, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+  <div class="my-5">
+    <%= form.label :alcohol %>
+    <%= form.text_field :alcohol, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+  <div class="my-5 flex flex-col gap-2">
+    <div class="flex">
+      <span>Select a wine or </span>
+      <%= link_to 'create a new one', new_wine_path(from: 'new_wine_vintage'), class: "font-semibold text-[#a12a45] px-2" %>
+    </div>
+    <%= form.collection_select :wine_id, @wines, :id, lambda { |wine| wine.full_description }, selected: params[:wine_id] || wine_vintage.wine, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>

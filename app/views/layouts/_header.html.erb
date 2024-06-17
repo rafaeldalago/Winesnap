@@ -1,0 +1,22 @@
+<div class="flex justify-between bg-pale_background gap-6 p-6 px-16">
+  <%= link_to root_path do %>
+    <%= image_tag 'winesnap_logo.png', alt: 'Wine bottles', size: '110' %>
+  <% end %>
+  <div id="links_container" class="flex gap-6 items-center">
+    <%= link_to 'Experiences', experiences_path, class: "menu-link" %>
+    <%= link_to 'Wine Vintages', wine_vintages_path, class: "menu-link" %>
+    <%= link_to 'Wines', wines_path, class: "menu-link" %>
+    <%= link_to 'Wineries', wineries_path, class: "menu-link" %>
+    <%= link_to 'Locations', locations_path, class: "menu-link" %>
+    <%= link_to 'Countries', countries_path, class: "menu-link" %>
+  </div>
+  <div id="session_container" class="flex gap-6 items-center">
+    <% if current_user %>
+      <span class="font-light text-zinc-500 text-sm"><%= current_user.email %></span>
+      <%= link_to 'Sign out', destroy_user_session_path, class: "menu-link" %>
+    <% else %>
+      <%= link_to 'Sign up', new_user_registration_path, class: "tertiary-link" %>
+      <%= link_to 'Sign in', new_user_session_path, class: "primary-button" %>
+    <% end %>
+  </div>
+</div>
