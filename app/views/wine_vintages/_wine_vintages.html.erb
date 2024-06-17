@@ -1,0 +1,18 @@
+<table class='table'>
+  <tr>
+    <th class="w-8"><%= link_to "#", :sort => "id" %></th>
+    <th><%= link_to "Vintage", :sort => "vintage" %></th>
+    <th><%= link_to "Alcohol", :sort => "alcohol" %></th>
+    <th><%= link_to "Wine", :sort => "wine" %></th>
+    <th><%= link_to "Likes", :sort => "likes" %></th>
+  </tr>
+  <% wine_vintages.each do |wine_vintage| %>
+    <tr class="<%= cycle('bg-zinc-50', 'bg-white') %>">
+      <td><%= wine_vintage.id %></td>
+      <td><%= wine_vintage.vintage %></td>
+      <td><%= wine_vintage.alcohol %></td>
+      <td><%= wine_vintage.wine.full_description %></td>
+      <td><%= wine_vintage.likes %></td>
+    </tr>
+  <% end %>
+</table>

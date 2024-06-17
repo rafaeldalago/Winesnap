@@ -2,10 +2,10 @@ class HomeController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    experiences = Experience.all.size
+    experiences = Experience.count
     @metrics = {
       experiences: experiences,
-      wines: WineVintage.all.size,
+      wines: WineVintage.count,
       liters: experiences * 0.75
     }
   end

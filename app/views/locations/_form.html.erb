@@ -15,7 +15,8 @@
   </div>
   <div class="my-5">
     <%= form.label :country %>
-    <%= form.text_field :country, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%# form.text_field :country, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.collection_select :country_id, @countries, :id, lambda { |country| "#{country.name}" }, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
   <div class="inline">
     <%= form.submit submit_button_text, class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>

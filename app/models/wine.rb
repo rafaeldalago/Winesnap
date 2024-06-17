@@ -20,6 +20,8 @@
 #
 class Wine < ApplicationRecord
   belongs_to :winery
+  has_one :location, through: :winery
+  has_one :country, through: :location
   has_many :wine_vintages
 
   validates :name, presence: true

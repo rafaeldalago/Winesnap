@@ -13,7 +13,7 @@ class WineriesController < ApplicationController
   # GET /wineries/new
   def new
     @winery = Winery.new
-    @locations = Location.all
+    @locations = Location.includes(:country).all
   end
 
   # GET /wineries/1/edit
@@ -22,7 +22,7 @@ class WineriesController < ApplicationController
   # POST /wineries or /wineries.json
   def create
     @winery = Winery.new(winery_params)
-    @locations = Location.all
+    @locations = Location.includes(:country).all
 
     respond_to do |format|
       if @winery.save
@@ -63,7 +63,7 @@ class WineriesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_winery
     @winery = Winery.find(params[:id])
-    @locations = Location.all
+    @locations = Location.includes(:country).all
   end
 
   # Only allow a list of trusted parameters through.

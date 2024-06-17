@@ -3,7 +3,7 @@ class LocationsController < ApplicationController
 
   # GET /locations or /locations.json
   def index
-    @locations = Location.all.order(params[:sort])
+    @locations = Location.includes(:country).all.order(params[:sort])
   end
 
   # GET /locations/1 or /locations/1.json
@@ -62,11 +62,12 @@ class LocationsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_location
-    @location = Location.find(params[:id])
+    @countries = Country.all.order(:name)
+    @location = Location.includes(:country).find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
   def location_params
-    params.require(:location).permit(:name, :country)
+    params.require(:location).permit(:name, :country_id)
   end
 end
