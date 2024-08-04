@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  alcohol: 9.99
+  vintage: 1
+  wine: one
+
+two:
+  alcohol: 9.99
+  vintage: 1
+  wine: two

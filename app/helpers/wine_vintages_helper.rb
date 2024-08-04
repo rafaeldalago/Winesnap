@@ -1,0 +1,2 @@
+module WineVintagesHelper
+end
