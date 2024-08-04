@@ -1,0 +1,39 @@
+<%= form_with(model: wine_experience, class: "contents") do |form| %>
+  <% if wine_experience.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(wine_experience.errors.count, "error") %> prohibited this wine_experience from being saved:</h2>
+      <ul>
+        <% wine_experience.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="my-5">
+    <%= form.label :tasted_on %>
+    <%= form.date_field :tasted_on, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+  <div class="my-5">
+    <%= form.label :location %>
+    <%= form.text_field :location, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+  <div class="my-5">
+    <%= form.label :notes %>
+    <%= form.text_area :notes, rows: 4, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+  <div class="my-5">
+    <%= form.label :price %>
+    <%= form.number_field :price, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+  <div class="my-5">
+    <%= form.label :rating %>
+    <%= form.text_field :rating, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+  <div class="my-5 flex flex-col">
+    <%= form.label :wine_vintage_id %>
+    <%= form.collection_select :wine_vintage_id, @wine_vintages, :id, lambda { |wine_vintage| "#{wine_vintage.vintage} - #{wine_vintage.wine.name}" }, selected: params[:wine_vintage_id] || wine_experience.wine_vintage_id %>
+  </div>
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>

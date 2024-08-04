@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_04_143029) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_04_153005) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,6 +36,20 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_04_143029) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["handle"], name: "index_users_on_handle", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "wine_experiences", force: :cascade do |t|
+    t.date "tasted_on"
+    t.string "location"
+    t.text "notes"
+    t.integer "price"
+    t.decimal "rating"
+    t.bigint "user_id", null: false
+    t.bigint "wine_vintage_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_wine_experiences_on_user_id"
+    t.index ["wine_vintage_id"], name: "index_wine_experiences_on_wine_vintage_id"
   end
 
   create_table "wine_vintages", force: :cascade do |t|
@@ -66,6 +80,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_04_143029) do
     t.index ["winery_id"], name: "index_wines_on_winery_id"
   end
 
+  add_foreign_key "wine_experiences", "users"
+  add_foreign_key "wine_experiences", "wine_vintages"
   add_foreign_key "wine_vintages", "wines"
   add_foreign_key "wineries", "countries"
   add_foreign_key "wines", "wineries"
