@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tasted_on: 2024-08-04
+  location: MyString
+  notes: MyText
+  price: 1
+  rating: 9.99
+  user: one
+  wine_vintage: one
+
+two:
+  tasted_on: 2024-08-04
+  location: MyString
+  notes: MyText
+  price: 1
+  rating: 9.99
+  user: two
+  wine_vintage: two
