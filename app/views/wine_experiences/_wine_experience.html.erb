@@ -12,6 +12,10 @@
     <%= wine_experience.notes %>
   </p>
   <p class="my-5">
+    <strong class="block font-medium mb-1">Gift?</strong>
+    <%= human_boolean(wine_experience.gift) %>
+  </p>
+  <p class="my-5">
     <strong class="block font-medium mb-1">Price:</strong>
     <%= wine_experience.price %>
   </p>
